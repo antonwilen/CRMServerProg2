@@ -73,11 +73,8 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
     public Customer getFullCustomerDetail(String customerId) throws RecordNotFoundException {
         Customer customer = template.queryForObject(GET_CUSTOMER_BY_ID_SQL, new CustomerMapper(), customerId);
         List<Call> calls = template.query(GET_NOTES_BY_CUSTOMER_ID_SQL, new CallMapper(), customerId);
+        customer.setCalls(calls);
 
-        for (Call call:calls
-             ) {
-            customer.addCall(call);
-        }
         return customer;
     }
 

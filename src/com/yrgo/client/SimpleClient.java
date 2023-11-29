@@ -57,28 +57,28 @@ public class SimpleClient {
 
         // Prova getAllCustomers
         List<Customer> allCustomers = customerService.getAllCustomers();
-        System.out.println("All customers:");
+        //System.out.println("All customers:");
         for (Customer c: allCustomers
         ) {
-            System.out.println(c);
+            //System.out.println(c);
         }
 
         // Prova findCustomersByName
-        System.out.println("Customer information");
+        //System.out.println("Customer information");
         List<Customer> customers = customerService.findCustomersByName("Nisse");
         for (Customer c:customers
              ) {
-            System.out.println("id: " + c.getCustomerId() + " name: " + c.getCompanyName() + " notes: " + c.getNotes());
+            //System.out.println("id: " + c.getCustomerId() + " name: " + c.getCompanyName() + " notes: " + c.getNotes());
         }
 
         // Prova findCustomerById
         Customer customerById = customerService.findCustomerById(customers.get(0).getCustomerId());
 
         // Prova updateCustomer
-        System.out.println("Updating: " + customerById);
+        //System.out.println("Updating: " + customerById);
         Customer updatedCustomer = new Customer("3", "Nisse", "Ta bort 2");
         customerService.updateCustomer(updatedCustomer);
-        System.out.println("New notes: " + customerService.findCustomerById(updatedCustomer.getCustomerId()).getNotes());
+        //System.out.println("New notes: " + customerService.findCustomerById(updatedCustomer.getCustomerId()).getNotes());
 
 
         // Prova recordCall
@@ -86,18 +86,18 @@ public class SimpleClient {
         customerService.recordCall(updatedCustomer.getCustomerId(), new Call("Vad blir det för mat?", new Date(2022,4,1,5,45,12)));
         // Prova getFullCustomerDetail
         Customer fullCustomer = customerService.getFullCustomerDetail(updatedCustomer.getCustomerId());
-        System.out.println("Calls: " + fullCustomer.getCalls());
+        //System.out.println("Calls: " + fullCustomer.getCalls());
 
         // Prova deleteCustomer
-        System.out.println("Removing: " + updatedCustomer);
+        //System.out.println("Removing: " + updatedCustomer);
         customerService.deleteCustomer(updatedCustomer);
 
         // Prova getAllCustomers
         allCustomers = customerService.getAllCustomers();
-        System.out.println("All customers:");
+        //System.out.println("All customers:");
         for (Customer c: allCustomers
              ) {
-            System.out.println(c);
+            //System.out.println(c);
         }
 
         container.close();
