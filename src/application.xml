@@ -1,13 +1,18 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xmlns:aop="http://www.springframework.org/schema/aop"
-	   xsi:schemaLocation=
-			   "http://www.springframework.org/schema/aop
-http://www.springframework.org/schema/aop/spring-aop.xsd
-http://www.springframework.org/schema/beans
-http://www.springframework.org/schema/beans/spring-beans.xsd">
+	   xmlns:tx="http://www.springframework.org/schema/tx"
+	   xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-	<!-- add your bean definitions here! -->
+
+
+<!-- add your bean definitions here! -->
 	<bean id="customerManagementService" class="com.yrgo.services.customers.CustomerManagementServiceProductionImpl">
 		<constructor-arg ref="customerDao" />
 	</bean>
@@ -44,6 +49,14 @@ http://www.springframework.org/schema/beans/spring-beans.xsd">
 						pointcut = "execution(* com.yrgo.services..*.*(..)) || execution(* com.yrgo.dataaccess.*.*(..))" />
 		</aop:aspect>
 	</aop:config>
+
+	<!-- Transaction Manager -->
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+
+	<!-- Transaction Configuration -->
+	<tx:annotation-driven/>
 
 
 
