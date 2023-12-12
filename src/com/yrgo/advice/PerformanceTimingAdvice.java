@@ -6,7 +6,9 @@ import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.springframework.aop.AfterReturningAdvice;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PerformanceTimingAdvice {
 
     public Object performTimingMeasurement (ProceedingJoinPoint method)
