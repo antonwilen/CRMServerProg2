@@ -16,7 +16,7 @@ import java.sql.SQLException;
 import java.util.Calendar;
 import java.util.List;
 
-@Repository
+
 public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
     private static final String UPDATE_SQL = "UPDATE CUSTOMER SET COMPANY_NAME=?, EMAIL=?, TELEPHONE=?, NOTES=? WHERE CUSTOMER_ID=?";
     private static final String INSERT_SQL = "INSERT INTO CUSTOMER (COMPANY_NAME, EMAIL, TELEPHONE, NOTES) VALUES (?,?,?,?)";
@@ -27,7 +27,7 @@ public class CustomerDaoJdbcTemplateImpl implements CustomerDao{
 
     private static final String GET_NOTES_BY_CUSTOMER_ID_SQL = "SELECT CALL_ID, CUSTOMER_ID, TIME_DATE, NOTES FROM CALLS WHERE CUSTOMER_ID=?";
     private static final String ADD_CALL_SQL = "INSERT INTO CALLS (CUSTOMER_ID, TIME_DATE, NOTES) VALUES (?,?,?)";
-    @Autowired
+    //@Autowired
     private JdbcTemplate template;
 
     @PostConstruct
